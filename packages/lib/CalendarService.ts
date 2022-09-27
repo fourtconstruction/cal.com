@@ -319,9 +319,15 @@ export default abstract class BaseCalendarService implements Calendar {
         event.endDate = event.endDate.convertToZone(zone);
       }
 
+      const start = dayjs(event.startDate.toJSDate()).add(7, "hour").toISOString();
+      const end = dayjs(event.endDate.toJSDate()).add(7, "hour").toISOString();
+
+      logger.debug("start_time", start);
+      logger.debug("end_time", end);
+
       return events.push({
-        start: dayjs(event.startDate.toJSDate()).tz("America/Vancouver").toISOString(),
-        end: dayjs(event.endDate.toJSDate()).tz("America/Vancouver").toISOString(),
+        start,
+        end,
       });
     });
 
