@@ -320,8 +320,8 @@ export default abstract class BaseCalendarService implements Calendar {
       }
 
       return events.push({
-        start: dayjs(event.startDate.toJSDate()).toISOString(),
-        end: dayjs(event.endDate.toJSDate()).toISOString(),
+        start: dayjs(event.startDate.toJSDate()).tz("America/Vancouver").toISOString(),
+        end: dayjs(event.endDate.toJSDate()).tz("America/Vancouver").toISOString(),
       });
     });
 
